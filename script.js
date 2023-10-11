@@ -8,9 +8,7 @@ const swap = document.getElementById("swap");
 function calculate() {
   const currency_one = currencyEl_one.value || "USD";
   const currency_two = currencyEl_two.value || "EUR";
-  fetch(
-    `https://v6.exchangerate-api.com/v6/5da0b85a0719a128b245de45/latest/${currency_one}`
-  )
+  fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/${currency_one}`)
     .then((res) => res.json())
     .then((data) => {
       //  console.log(data);
@@ -24,9 +22,7 @@ function calculate() {
 
 function populateCurrencyOptions() {
   // Fetch the currency options from the API
-  fetch(
-    "https://v6.exchangerate-api.com/v6/5da0b85a0719a128b245de45/latest/USD"
-  )
+  fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/USD`)
     .then((res) => res.json())
     .then((data) => {
       let currencies = [...Object.keys(data.conversion_rates)];
